@@ -1,0 +1,76 @@
+<form action="<?PHP echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+                            <input type="hidden" name="ID" value=<?php echo $ID; ?>>
+                            <div class="wrapper">
+                                <div class="left">
+                                    Title
+                                </div>
+                            <div class="right">
+                                <input type="text" name="title" value="<?php echo $title ?>">
+                            </div>
+                            
+                            <div class="left">
+                                Author
+                            </div>
+                            <div class="right">
+                                <input type="text" name="author" value="<?php echo $author ?>">>
+                            </div>
+                            
+                            <div class="left">
+                                Year
+                            </div>
+                            <div class="right">
+                                <input type="number" name="year" value="<?php echo $year ?>">>
+                            </div>
+                            
+                            <div class="left">
+                                Genre
+                            </div>
+                            <div class="right">
+                                <input type="text" name="genre" value="<?php echo $genre ?>">>
+                            </div>
+                            
+                            <div class="left">
+                                Pages
+                            </div>
+                            <div class="right">
+                                <input type="number" name="pages" value="<?php echo $pages ?>">>
+                            </div>
+                            
+                            <div class="left">
+                                Library
+                            </div>
+                            <div class="right">
+                                <select name="library">
+                                    <?php 
+                                        while ($library = $libraries -> fetch_assoc()) {
+                                            if ($library["ID"] == $library_selected) {
+                                                echo "<option value=\"" . $library["ID"] . "\" selected>" . $library["name"] . "</option>";
+                                            } else {
+                                                echo "<option value=\"" . $library["ID"] . "\">" . $library["name"] . "</option>";
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                            
+                            <div class="left">
+                                Department
+                            </div>
+                            <div class="right">
+                                <select name="department">
+                                    <?php 
+                                        while ($department = $departments -> fetch_assoc()) {
+                                            if ($department["ID"] == $department_selected) {
+                                                echo "<option value=\"" . $department["ID"] . "\" selected>" . $department["name"] . "</option>";
+                                            } else {
+                                                echo "<option value=\"" . $department["ID"] . "\">" . $department["name"] . "</option>";
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                            </div>
+                            <div class="left">
+                                <input type="submit" value="Save">
+                            </div>
+                        </form>
